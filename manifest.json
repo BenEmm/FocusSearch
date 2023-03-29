@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Search Bar Focus",
+  "version": "1.0",
+  "description": "Automatically focuses on the search bar of any website",
+  "permissions": ["activeTab"],
+  "icons": {
+    "16": "/img/small.png",
+    "48": "/img/medium.png",
+    "128": "/img/large.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
