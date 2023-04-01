@@ -3,7 +3,7 @@
   "name": "Search Bar Focus",
   "version": "1.0",
   "description": "Automatically focuses on the search bar of any website",
-  "permissions": ["activeTab"],
+  "permissions": ["scripting"],
   "icons": {
     "16": "/img/small.png",
     "48": "/img/medium.png",
