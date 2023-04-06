@@ -1,9 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Search Bar Focus",
+  "name": "Focus Search",
   "version": "1.0",
-  "description": "Automatically focuses on the search bar of any website",
-  "permissions": ["scripting"],
+  "description": "Automatically focuses on the search bar of any website and gives the user the option to manually focus on a search bar using CTRL + Space",
   "icons": {
     "16": "/img/small.png",
     "48": "/img/medium.png",
