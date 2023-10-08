@@ -13,22 +13,33 @@ const excluded = excludedSearchEngines.some(domain => currentUrl.includes(domain
 
 // Focus on the search box
 function focusSearchInput() {
-  // If the current page is the homepage of the website and is not an excluded search engine, find and focus on the search box
-  // Find the first input element that is a text or search field
-  const searchInput = [...document.querySelectorAll('input[type="text"], input[type="search"]')].find(input => input.offsetParent !== null && !input.disabled);
+  // Find all input elements that are text or search fields
+  const inputs = [...document.querySelectorAll('input[type="text"], input[type="search"]')];
 
-  // If a search input is found, focus on it
-  if (searchInput) {
-    searchInput.focus();
+  // Filter out inputs that are not visible
+  const visibleInputs = inputs.filter(input => input.offsetParent !== null && !input.disabled);
+
+  // Calculate 25% of the window's inner height
+  const quarterPageHeight = window.innerHeight * 0.25;
+
+  // Further filter by checking if the input is within the first 25% of the page
+  const likelySearchInputs = visibleInputs.filter(input => {
+    const rect = input.getBoundingClientRect();
+    return rect.top <= quarterPageHeight;
+  });
+
+  // If a likely search input is found, focus on it
+  if (likelySearchInputs.length > 0) {
+    likelySearchInputs[0].focus();
   }
 }
 
-// Allows for manual focusing of the search input by pressing Ctrl + Space.
+// Allows for manual focusing of the search input by pressing Ctrl + Space
 function manualFocusSearchInput() {
   focusSearchInput();
 }
 
-// Allows the user to focus on the search input by pressing Ctrl + Space on command.
+// Allows the user to focus on the search input by pressing Ctrl + Space on command
 document.addEventListener('keydown', function (event) {
   if (event.ctrlKey && event.code === 'Space') {
     manualFocusSearchInput();
