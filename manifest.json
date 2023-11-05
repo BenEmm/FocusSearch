@@ -4,9 +4,20 @@
   "version": "1.2",
   "description": "Automatically focuses the search bar of websites and gives the user the option to manually focus on a search bar using CTRL + Space",
   "icons": {
-    "16": "/img/small.png",
-    "48": "/img/medium.png",
-    "128": "/img/large.png"
+    "16": "img/small.png",
+    "48": "img/medium.png",
+    "128": "img/large.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "img/small.png",
+      "48": "img/medium.png",
+      "128": "img/large.png"
+    }
   },
   "content_scripts": [
     {

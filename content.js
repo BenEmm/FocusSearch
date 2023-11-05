@@ -11,32 +11,42 @@ const isHomepage = currentUrl === homepageUrl;
 // Check if the current page is an excluded search engine
 const excluded = excludedSearchEngines.some(domain => currentUrl.includes(domain));
 
-// Focus on the search box
+// Function to focus on the search box, now wrapped in a check for the extension's state
 function focusSearchInput() {
-  // Find all input elements that are text or search fields
-  const inputs = [...document.querySelectorAll('input[type="text"], input[type="search"]')];
+  // Only proceed if the extension is enabled
+  chrome.storage.local.get(['focusSearchEnabled'], function(result) {
+    if (result.focusSearchEnabled !== false) {
+      // Find all input elements that are text or search fields
+      const inputs = [...document.querySelectorAll('input[type="text"], input[type="search"]')];
 
-  // Filter out inputs that are not visible
-  const visibleInputs = inputs.filter(input => input.offsetParent !== null && !input.disabled);
+      // Filter out inputs that are not visible
+      const visibleInputs = inputs.filter(input => input.offsetParent !== null && !input.disabled);
 
-  // Calculate 25% of the window's inner height
-  const quarterPageHeight = window.innerHeight * 0.25;
+      // Calculate 25% of the window's inner height
+      const quarterPageHeight = window.innerHeight * 0.25;
 
-  // Further filter by checking if the input is within the first 25% of the page
-  const likelySearchInputs = visibleInputs.filter(input => {
-    const rect = input.getBoundingClientRect();
-    return rect.top <= quarterPageHeight;
+      // Further filter by checking if the input is within the first 25% of the page
+      const likelySearchInputs = visibleInputs.filter(input => {
+        const rect = input.getBoundingClientRect();
+        return rect.top <= quarterPageHeight;
+      });
+
+      // If a likely search input is found, focus on it
+      if (likelySearchInputs.length > 0) {
+        likelySearchInputs[0].focus();
+      }
+    }
   });
-
-  // If a likely search input is found, focus on it
-  if (likelySearchInputs.length > 0) {
-    likelySearchInputs[0].focus();
-  }
 }
 
 // Allows for manual focusing of the search input by pressing Ctrl + Space
 function manualFocusSearchInput() {
-  focusSearchInput();
+  // Only proceed if the extension is enabled
+  chrome.storage.local.get(['focusSearchEnabled'], function(result) {
+    if (result.focusSearchEnabled !== false) {
+      focusSearchInput();
+    }
+  });
 }
 
 // Allows the user to focus on the search input by pressing Ctrl + Space on command
