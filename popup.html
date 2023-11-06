@@ -12,22 +12,22 @@
       box-sizing: border-box;
     }
     .logo-container {
-      padding: 2px; /* Further reduced padding around the logo */
-      margin-bottom: 5px; /* Further reduced margin to bring text closer */
+      padding: 2px;
+      margin-bottom: 5px;
     }
     .logo-container img {
-      max-width: 80%; /* Adjust as necessary for your logo */
+      max-width: 80%;
       height: auto;
     }
     .title {
-      margin-bottom: 10px; /* Consistent margin above the toggle */
+      margin-bottom: 10px;
       font-size: 18px;
       font-weight: bold;
     }
     #toggle {
       position: relative;
       display: inline-block;
-      width: 60px;
+      width: 70px; /* Adjusted width to give more space for text */
       height: 34px;
       margin-bottom: 20px;
     }
@@ -44,7 +44,6 @@
       right: 0;
       bottom: 0;
       background-color: #ccc;
-      -webkit-transition: .4s;
       transition: .4s;
     }
     .slider:before {
@@ -55,7 +54,6 @@
       left: 4px;
       bottom: 4px;
       background-color: white;
-      -webkit-transition: .4s;
       transition: .4s;
     }
     input:checked + .slider {
@@ -65,15 +63,44 @@
       box-shadow: 0 0 1px #2196F3;
     }
     input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
+      /* Slightly decreased translateX value for symmetry */
+      transform: translateX(36px); /* Adjust this value as needed */
     }
     .slider.round {
       border-radius: 34px;
     }
     .slider.round:before {
       border-radius: 50%;
+    }
+    /* ON/OFF text styles */
+    .slider .text {
+      color: white;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s;
+    }
+    .slider .on {
+      left: 10%;
+      opacity: 0;
+    }
+    .slider .off {
+      right: 10%;
+      opacity: 1;
+    }
+    input:checked + .slider .on {
+      opacity: 1;
+      left: 10%; /* Positioned to the left when toggled ON */
+    }
+    input:checked + .slider .off {
+      opacity: 0;
+    }
+    input:not(:checked) + .slider .on {
+      opacity: 0;
+    }
+    input:not(:checked) + .slider .off {
+      opacity: 1;
+      right: 10%; /* Positioned to the right when toggled OFF */
     }
   </style>
 </head>
@@ -84,9 +111,12 @@
   <div class="title">Focus Search</div>
   <label id="toggle">
     <input type="checkbox" checked>
-    <span class="slider round"></span>
+    <span class="slider round">
+      <span class="text on">ON</span>
+      <span class="text off">OFF</span>
+    </span>
   </label>
-  <div id="timeSaved">Time Saved: 0 Seconds</div> <!-- New Time Saved Display -->
+  <div id="timeSaved">Time Saved: 0 Seconds</div>
   <script src="popup.js"></script>
 </body>
 </html>
