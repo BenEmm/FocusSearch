@@ -27,7 +27,7 @@
     #toggle {
       position: relative;
       display: inline-block;
-      width: 70px; /* Adjusted width to give more space for text */
+      width: 70px;
       height: 34px;
       margin-bottom: 20px;
     }
@@ -63,8 +63,7 @@
       box-shadow: 0 0 1px #2196F3;
     }
     input:checked + .slider:before {
-      /* Slightly decreased translateX value for symmetry */
-      transform: translateX(36px); /* Adjust this value as needed */
+      transform: translateX(36px);
     }
     .slider.round {
       border-radius: 34px;
@@ -72,7 +71,6 @@
     .slider.round:before {
       border-radius: 50%;
     }
-    /* ON/OFF text styles */
     .slider .text {
       color: white;
       position: absolute;
@@ -90,7 +88,7 @@
     }
     input:checked + .slider .on {
       opacity: 1;
-      left: 10%; /* Positioned to the left when toggled ON */
+      left: 10%;
     }
     input:checked + .slider .off {
       opacity: 0;
@@ -100,8 +98,29 @@
     }
     input:not(:checked) + .slider .off {
       opacity: 1;
-      right: 10%; /* Positioned to the right when toggled OFF */
+      right: 10%;
     }
+
+    /* Enhanced Footer styles */
+    .footer {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #2196F3; /* Blue background */
+      text-align: center;
+      border-radius: 5px; /* Rounded corners */
+      transition: background-color 0.3s ease; /* Smooth transition for the background */
+    }
+    .footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease; /* Smooth transition for the color */
+    }
+    .footer a:hover {
+      color: #AED6F1; /* Brighter shade of blue for a subtle hover effect */
+      text-decoration: underline; /* Underline for a classic hover indication */
+    }
+
   </style>
 </head>
 <body>
@@ -117,6 +136,11 @@
     </span>
   </label>
   <div id="timeSaved">Time Saved: 0 Seconds</div>
+  <!-- Footer section -->
+  <div class="footer">
+    <a href="https://www.fs.ben-mcleod.com.com" target="_blank">Visit our website</a>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
+
