@@ -44,9 +44,22 @@ function focusSearchInput() {
   }
 }
 
-// Allows for manual focusing of the search input by pressing Ctrl + Space
+// Before focusing on the search box, check if the addon is enabled
+function maybeFocusSearchInput() {
+  chrome.storage.local.get(['isEnabled'], function(result) {
+    if (result.isEnabled !== false) { // If isEnabled is true or undefined, focus the search input
+      focusSearchInput();
+    }
+  });
+}
+
+// Update the manual focus function to check the toggle state
 function manualFocusSearchInput() {
-  focusSearchInput();
+  chrome.storage.local.get(['isEnabled'], function(result) {
+    if (result.isEnabled !== false) {
+      focusSearchInput();
+    }
+  });
 }
 
 // Allows the user to focus on the search input by pressing Ctrl + Space on command
@@ -58,5 +71,5 @@ document.addEventListener('keydown', function (event) {
 
 // If the current page is the homepage of the website and is not an excluded search engine, focus on the search box
 if (isHomepage && !excluded) {
-  focusSearchInput();
+  maybeFocusSearchInput();
 }
