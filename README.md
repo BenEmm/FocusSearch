@@ -3,6 +3,8 @@
 
  Want to manually focus the search bar? Just hit CTRL + SPACE and watch the magic happen.
  
+ Don't want to use CTRL + SPACE? No problem! Use the custom keybind feature to set your own!
+ 
  ## Why?
  Ever noticed that when you go to Google, Bing or your favourite search engine that you can just start typing right away? You don't have the extra step of reaching for your mouse and clicking the search box before you can progress? Well, after using websites like YouTube, Amazon, Ebay... You name it, I got sick of them not following this convention. So, I created this browser addon! Now when I go to YouTube looking for a tutorial, or Amazon looking for a product, I don't have the tedious step of clicking my mouse before I can continue with what I originally intended, the same goes for every other website on the web!
  
