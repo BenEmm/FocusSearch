@@ -57,26 +57,30 @@ function manualFocusSearchInput() {
 
 // --- Two-key combo support ---
 let activeKeys = new Set();
-let currentKeybind = { keys: ["ControlLeft", "Space"] }; // default is Ctrl + Space
+let currentKeybind = { keys: ["ControlLeft", "Space"] }; // default combo
 
 // Load the keybind at startup
 chrome.storage.local.get(['customKeybind'], function(result) {
-  if (result.customKeybind) {
+  if (result.customKeybind && result.customKeybind.keys && Array.isArray(result.customKeybind.keys)) {
     currentKeybind = result.customKeybind;
   }
 });
 
-// Keep keybind updated live
+// Keep keybind updated live when popup changes it
 chrome.storage.onChanged.addListener(function(changes) {
-  if (changes.customKeybind) {
-    currentKeybind = changes.customKeybind.newValue;
+  if (changes.customKeybind && changes.customKeybind.newValue) {
+    const newBind = changes.customKeybind.newValue;
+    if (newBind.keys && Array.isArray(newBind.keys)) {
+      currentKeybind = newBind;
+    }
   }
 });
 
+// Detect key combos
 document.addEventListener('keydown', function(event) {
   activeKeys.add(event.code);
 
-  // Check if both keys are pressed
+  // Check if both keys in currentKeybind are pressed
   if (currentKeybind && currentKeybind.keys.every(k => activeKeys.has(k))) {
     manualFocusSearchInput();
   }
