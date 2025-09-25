@@ -2,6 +2,7 @@
  Introducing Focus Search - a revolutionary browser extension that streamlines your web browsing experience by seamlessly selecting the search bar on any website. With this ingenious addon, there's no need to break your flow and reach for your mouse just to click on the search box - simply start typing right away with the convenience of your keyboard.  Not only does this cutting-edge extension improve accessibility for all websites with a search bar, it also elevates your browsing quality of life with its intuitive design and hassle-free functionality. Say goodbye to tedious clicking and hello to a more efficient browsing experience with Focus Search.  The best bit? It works automatically! Simply add to your browser and watch it go!
 
  Want to manually focus the search bar? Just hit CTRL + SPACE and watch the magic happen.
+ 
  Don't want to use CTRL + SPACE? No problem! Use the custom keybind feature to set your own!
  
  ## Why?
