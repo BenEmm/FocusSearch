@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Focus Search",
   "version": "2.0",
-  "description": "Automatically focuses the search bar of websites and gives the user the option to manually focus on a search bar using CTRL + Space. Don't like CTRL + Space? Change it in the options!",
+  "description": "Automatically focuses the search bar of websites and gives the user the option to manually focus on a search bar using a keybind.",
   "icons": {
     "16": "img/small.png",
     "48": "img/medium.png",
